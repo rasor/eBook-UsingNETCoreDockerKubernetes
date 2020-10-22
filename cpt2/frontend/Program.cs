@@ -20,7 +20,11 @@ namespace frontend
             Host.CreateDefaultBuilder(args)
                 .ConfigureWebHostDefaults(webBuilder =>
                 {
-                    webBuilder.UseStartup<Startup>();
+                    webBuilder
+                        // https://docs.microsoft.com/en-us/aspnet/core/fundamentals/host/web-host?view=aspnetcore-3.1#server-urls
+                        //.UseUrls("http://0.0.0.0:5000;https://0.0.0.0:5001")
+                        .UseUrls(Environment.GetEnvironmentVariable("MVCAPPURLS"))
+                        .UseStartup<Startup>();
                 });
     }
 }

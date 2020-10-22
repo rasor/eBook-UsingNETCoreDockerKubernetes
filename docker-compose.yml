@@ -1,13 +1,14 @@
+# Generated docker-compose.yml
 # Please refer https://aka.ms/HTTPSinContainer on how to setup an https developer certificate for your ASP .NET Core service.
 
 version: '3.4'
 
 services:
   frontend:
-    image: frontend
+    image: frontend2
     build:
       context: .
-      dockerfile: cpt2/frontend/Dockerfile
+      dockerfile: Dockerfile
     ports:
       - 5000
       - 5001
