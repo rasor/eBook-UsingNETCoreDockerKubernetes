@@ -24,8 +24,5 @@ FROM base AS final
 WORKDIR /app
 # 16. Copy from Source img to Target img
 COPY --from=publish /app/publish .
-# 17. Pass in UseUrls
-#ENV MVCAPPURLS=https://0.0.0.0:5001;http://0.0.0.0:5000
-ENV MVCAPPURLS=http://0.0.0.0:5000
-# 18. Define start command
+# 17. Define start command
 ENTRYPOINT ["dotnet", "frontend.dll"]
