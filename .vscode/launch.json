@@ -38,6 +38,16 @@
         "netCore": {
             "appProject": "${workspaceFolder}/cpt2/frontend/frontend.csproj"
         }
-    }
-]
+    },
+    {
+        "name": "Docker .NET Core Attach (Preview)",
+        "type": "docker",
+        "request": "attach",
+        "containerName": "frontend2",
+        "platform": "netCore",
+        "sourceFileMap": {
+            "/src": "${workspaceFolder}"
+        },
+    },
+   ]
 }
