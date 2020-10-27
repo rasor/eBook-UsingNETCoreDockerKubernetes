@@ -1,0 +1,44 @@
+# https://docs.microsoft.com/en-us/dotnet/architecture/containerized-lifecycle/design-develop-containerized-apps/build-aspnet-core-applications-linux-containers-aks-kubernetes#deploy-webappyml
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: frontend2
+  labels:
+    app: usingnetcoredockerkubernetes
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      service: frontend2
+  template:
+    metadata:
+      labels:
+        app: usingnetcoredockerkubernetes
+        service: frontend2
+    spec:
+      containers:
+        - name: frontend2
+          image: rasor/usingnetcoredockerkubernetes:frontend2-v1
+          imagePullPolicy: IfNotPresent
+          ports:
+            - containerPort: 5000
+              protocol: TCP
+          env:
+            - name: ASPNETCORE_URLS
+              value: http://+:5000
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: frontend2
+  labels:
+    app: usingnetcoredockerkubernetes
+    service: frontend2
+spec:
+  type: LoadBalancer
+  ports:
+    - port: 5000
+      targetPort: 5000
+      protocol: TCP
+  selector:
+    service: frontend2
