@@ -9,6 +9,8 @@
 *.user
 *.userosscache
 *.sln.docstates
+# from k8s - open dashboard
+/*.out
 
 # User-specific files (MonoDevelop/Xamarin Studio)
 *.userprefs
